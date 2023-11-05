@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>{{ cookiecutter.project_name }}</title>
+    {% raw %}
+    <script lang="javascript">
+    {{ inertia.include_router() }}
+    </script>
+    {% if config.DEBUG %}
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/src/main.js"></script>
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename=manifest['src/main.js'].css[0]) }}" />
+    <script type="module" src="{{ url_for('static', filename=manifest['src/main.js'].file) }}"></script>
+    {% endif %}
+    {% endraw %}
+  </head>
+  <body>
+    {% raw %}
+    <div id="app" data-page='{{ page | tojson }}'></div>
+    {% endraw %}
+  </body>
+</html>

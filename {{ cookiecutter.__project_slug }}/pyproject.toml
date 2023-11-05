@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "0.1.0"
+description = ""
+authors = ["{{ cookiecutter.author }} <{{ cookiecutter.author_email }}>"]
+readme = "README.md"
+packages = [{include = "flaskr"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+poethepoet = "^0.24"
+flask = "^3"
+flask-inertia = "^0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poe]
+shell_interpreter = "bash"
+
+[tool.poe.tasks]
+init = {shell = "npm install", cwd = "./flaskr/vue"}
+dev = {shell = "poe dev-vue & poe dev-python"}
+dev-vue = {shell = "npm run dev", cwd = "./flaskr/vue"}
+dev-python = {shell = "flask run --debug", env = {FLASK_APP = "flaskr"}}

@@ -1,0 +1,12 @@
+{
+    "project_name": "Flask VITE",
+    "__project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "author": "No Reply",
+    "author_email": "no-reply@example.com",
+    "github_username": "no-reply",
+    "__prompts__": {
+        "project_name": "[bold yellow]Project name[/]",
+        "author": "[bold yellow]Author name[/]",
+        "author_email": "[bold yellow]Author email[/]"
+    }
+}
